@@ -6,25 +6,20 @@ namespace Desconto
     {
         static void Main(string[] args)
         {
-            Dados dados = new Dados();
-            bool controle = true;
-            while (controle)
+            DadosDesconto dadosdesconto = new DadosDesconto();
+            Console.WriteLine("Insira o nome do produto: ");
+            dadosdesconto.Nome = Console.ReadLine();
+            Console.WriteLine("Insira o preço do produto: ");
+            dadosdesconto.Preco = double.Parse(Console.ReadLine());
+            Console.WriteLine("Insira a quantidade dos produtos: ");
+            dadosdesconto.Quantidade = int.Parse(Console.ReadLine());
+            if (dadosdesconto.Quantidade >= 1 && dadosdesconto.Preco > 0)
             {
-                Console.WriteLine("Insira o nome do produto: ");
-                dados.nome = Console.ReadLine();
-                Console.WriteLine("Insira o preço do produto: ");
-                dados.preco = double.Parse(Console.ReadLine());
-                Console.WriteLine("Insira a quantidade dos produtos: ");
-                dados.quantidade = int.Parse(Console.ReadLine());
-                if (dados.quantidade >= 1 && dados.preco > 0)
-                {
-                    CalculadoraDesconto.CalcularDesconto(dados);
-                    controle = false;
-                }
-                else
-                {
-                    Console.WriteLine("Valores inválidos.");
-                }
+                dadosdesconto.CalcularDesconto();
+            }
+            else
+            {
+                Console.WriteLine("Valores inválidos.");
             }
         }
     }
